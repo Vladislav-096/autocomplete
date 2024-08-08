@@ -1,0 +1,43 @@
+.search-info-card {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.search-info-option {
+  padding: 15px 0;
+}
+
+.search-info-card:hover {
+  background-color: #f8f8f8;
+}
+
+.search-info-container {
+  position: absolute;
+  top: 55px;
+  width: 100%;
+  max-height: 433px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: 0.2s;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.1);
+}
+
+.search-info-descr {
+  font-size: 16px;
+}
+
+.search-info-container.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.search-info-category-name {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+}

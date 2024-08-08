@@ -1,0 +1,25 @@
+.input-main-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input {
+  padding: 0 15px 0;
+  width: 444px;
+  font-size: 18px;
+}
+
+.custom-placeholder {
+  position: absolute;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: black;
+  top: 4px;
+  left: 16px;
+  pointer-events: none;
+}

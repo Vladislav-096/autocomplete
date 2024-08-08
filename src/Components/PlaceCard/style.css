@@ -1,0 +1,17 @@
+.place-card-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.place-card-list {
+  width: 444px;
+}
+
+.place-card-list__item:first-child {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.place-card-list__item:not(:last-child) {
+  margin-bottom: 10px;
+}
