@@ -23,3 +23,9 @@
   left: 16px;
   pointer-events: none;
 }
+
+.loading-indicator {
+  position: absolute;
+  top: 2px;
+  right: 11px;
+}

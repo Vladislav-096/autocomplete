@@ -4,6 +4,7 @@ import { debounce } from "lodash";
 import { InputSearchInfo } from "../InputSearchInfo/InputSearchInfo";
 import { fetchSuggestions } from "../Main/Main";
 import "./style.css";
+import { Loader } from "../Loader/Loader";
 
 interface InputSearch {
   fetchSuggestions: ({ value }: fetchSuggestions) => Promise<void>;
@@ -18,11 +19,15 @@ export const InputSearch = ({
 }: InputSearch) => {
   const [text, setText] = useState("");
   const [isSearchMenuActive, setIsSearchMenuActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const count = 10;
   const debouncedSaves = useCallback(
-    debounce((value) => fetchSuggestions({ value, count }), 400),
+    debounce(async (value) => {
+      setIsLoading(true);
+      await fetchSuggestions({ value });
+      setIsLoading(false);
+    }, 400),
     []
   );
 
@@ -58,6 +63,11 @@ export const InputSearch = ({
           onClick={handleClick}
         />
         {text === "" && <span className="custom-placeholder">Поиск</span>}
+        {isLoading && (
+          <div className="loading-indicator">
+            <Loader />
+          </div>
+        )}
         <InputSearchInfo
           suggestions={suggestions}
           text={text}

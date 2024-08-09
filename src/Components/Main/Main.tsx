@@ -3,19 +3,21 @@ import { InputSearch } from "../InputSearch/InputSearch";
 import { PlaceCard } from "../PlaceCard/PlaceCard";
 import "./style.css";
 
+const count = 10;
+const ACCESS_TOKEN = `access_token=pk.eyJ1IjoidGVybW94aW4iLCJhIjoiY2w0NjdhOHgxMDVtcTNjbjIwdWxjZHVsdCJ9.-RRQ9TZ9JdX8wkZfsOKq5g&limit=${count}`;
+
 export interface fetchSuggestions {
   value: string;
-  count: number;
 }
 
 export const Main = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [showPlaceInfo, setShowPlaceInfo] = useState({});
 
-  const fetchSuggestions = async ({ value, count }: fetchSuggestions) => {
+  const fetchSuggestions = async ({ value }: fetchSuggestions) => {
     try {
       const response = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${value}.json?access_token=pk.eyJ1IjoidGVybW94aW4iLCJhIjoiY2w0NjdhOHgxMDVtcTNjbjIwdWxjZHVsdCJ9.-RRQ9TZ9JdX8wkZfsOKq5g&limit=${count}`
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${value}.json?${ACCESS_TOKEN}`
       );
       const data = await response.json();
 
